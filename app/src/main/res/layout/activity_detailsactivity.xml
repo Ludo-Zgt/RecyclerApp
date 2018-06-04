@@ -4,22 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imvColor"
-        android:transitionName="transColor"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/divCenter"
-        android:scaleType="fitCenter"
-        android:background="@color/colorPrimary"/>
+        android:transitionName="@string/transition_img"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="44dp"
+        android:layout_above="@id/lblNameHeader"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         style="@style/Text.Primary"
         android:id="@+id/lblNameHeader"
-        android:transitionName="transName"
+        android:transitionName="@string/transition_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dark Vador"
+        android:text="@string/fake_text_name"
+        android:gravity="center"
         android:layout_above="@id/divCenter"/>
     
     <View
@@ -31,10 +32,11 @@
     <TextView
         style="@style/Text.Secondary"
         android:id="@+id/lblBiographyBody"
-        android:transitionName="transBio"
+        android:transitionName="@string/transition_bio"
+        android:layout_margin="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/divCenter"
-        android:text="Lorem ipsum actae set dominus regis."/>
+        android:text="@string/fake_text_bio"/>
 
 </RelativeLayout>

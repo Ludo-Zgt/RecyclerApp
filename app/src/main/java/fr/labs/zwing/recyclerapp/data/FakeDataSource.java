@@ -38,7 +38,7 @@ public class FakeDataSource implements DataSourceInterface{
                     "s'entourer d'alliés, comme Robin, son majordome Alfred Pennyworth ou encore le " +
                     "commissaire de police James Gordon.",
             ", est un personnage de fiction," +
-                    " successivement chevalier Jedi et seigneur Sith, et le personnage central des " +
+                    ", successivement chevalier Jedi et seigneur Sith, et le personnage central des " +
                     "deux premières trilogies de la saga cinématographique Star Wars conçue par George Lucas.",
             " est le personnage principal du manga Naruto inventé par Masashi Kishimoto.\n" +
                     "\n" +

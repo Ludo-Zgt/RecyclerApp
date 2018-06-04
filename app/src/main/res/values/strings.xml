@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RecyclerApp</string>
+
+    <string name="title_list_activity">RecyclerApp</string>
+
+    <string name="transition_img">transImage</string>
+    <string name="transition_name">transName</string>
+    <string name="transition_bio">transBio</string>
+
+    <string name="fake_text_name">Dark Vador</string>
+    <string name="fake_text_bio"> Dark Vador, successivement chevalier Jedi et seigneur Sith, et le personnage
+        central des deux premières trilogies de la saga cinématographique Star Wars conçue par
+        George Lucas.</string>
+
 </resources>

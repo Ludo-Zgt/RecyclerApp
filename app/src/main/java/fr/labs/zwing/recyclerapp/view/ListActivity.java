@@ -2,11 +2,14 @@ package fr.labs.zwing.recyclerapp.view;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +35,7 @@ public class ListActivity extends AppCompatActivity implements ViewInterface{
     private LayoutInflater layoutInflater;
     private RecyclerView recyclerView;
     private CustomAdapter adapter;
+    private Toolbar toolbar;
 
     private Controller controller;
 
@@ -44,33 +48,56 @@ public class ListActivity extends AppCompatActivity implements ViewInterface{
         recyclerView = findViewById(R.id.recListActivity);
         layoutInflater = getLayoutInflater();
 
+        toolbar = (Toolbar) findViewById(R.id.tlb_list_activity);
+
+        toolbar.setTitle(R.string.title_list_activity);
+        //toolbar.setLogo(R.drawable.ic_view_list_white_24dp);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            toolbar.setTitleMarginStart(72);
+        }
+
         //This is Dependency Injection here
         controller = new Controller(this, new FakeDataSource());
     }
 
     @Override
-    public void startDetailActivity(String name, String biography, int colorResource) {
+    public void startDetailActivity(String name, String biography, int colorResource, View viewRoot) {
         Intent intent = new Intent(this, Detailsactivity.class);
         intent.putExtra(EXTRA_COLOR, colorResource);
         intent.putExtra(EXTRA_NAME, name);
         intent.putExtra(EXTRA_BIOGRAPHY, biography);
 
+        getWindow().setEnterTransition(new Fade(Fade.IN));
+        getWindow().setEnterTransition(new Fade(Fade.OUT));
 
-
-/*
+        Pair[] pairs = new Pair[3];
+        pairs[0] = new Pair<View, String>(
+                viewRoot.findViewById(R.id.imvListCircle),
+                getString(R.string.transition_img)
+        );
+        pairs[1] = new Pair<View, String>(
+                viewRoot.findViewById(R.id.lblName),
+                getString(R.string.transition_name)
+        );
+        pairs[2] = new Pair<View, String>(
+                viewRoot.findViewById(R.id.lblBiography),
+                getString(R.string.transition_bio)
+        );
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
                 this,
-                Pair.create(recyclerView, "imavTransColor")
-        )*/
+                pairs
+        );
 
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
     @Override
     public void setUpAdapterAndView(List<ListItem> listOfData) {
         this.listOfData = listOfData;
         //new GridLayoutManager or StaggeredGridLayoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         adapter = new CustomAdapter();
         recyclerView.setAdapter(adapter);
 
@@ -136,7 +163,8 @@ public class ListActivity extends AppCompatActivity implements ViewInterface{
                 );
 
                 controller.onListItemClick(
-                        listItem
+                        listItem,
+                        v
                 );
             }
         }

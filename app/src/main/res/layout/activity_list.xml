@@ -11,7 +11,7 @@
         android:id="@+id/tlb_list_activity"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"

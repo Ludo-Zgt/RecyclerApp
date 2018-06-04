@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import fr.labs.zwing.recyclerapp.R;
 
 public class Detailsactivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class Detailsactivity extends AppCompatActivity {
 
     private TextView tvName;
     private TextView tvBiography;
-    private ImageView coloredBackground;
+    private CircleImageView coloredBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

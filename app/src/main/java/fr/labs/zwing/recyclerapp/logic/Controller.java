@@ -1,5 +1,7 @@
 package fr.labs.zwing.recyclerapp.logic;
 
+import android.view.View;
+
 import fr.labs.zwing.recyclerapp.data.DataSourceInterface;
 import fr.labs.zwing.recyclerapp.data.ListItem;
 import fr.labs.zwing.recyclerapp.view.ViewInterface;
@@ -23,11 +25,12 @@ public class Controller {
 
     }
 
-    public void onListItemClick(ListItem testItem) {
+    public void onListItemClick(ListItem testItem, View viewRoot) {
         view.startDetailActivity(
                 testItem.getName(),
                 testItem.getBiography(),
-                testItem.getColorResource()
+                testItem.getColorResource(),
+                viewRoot
 
         );
     }
